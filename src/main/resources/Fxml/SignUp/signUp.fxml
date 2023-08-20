@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: fbfefb;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tokai.Controllers.SignUpController">
+    <effect>
+        <Blend opacity="0.6">
+            <topInput>
+                <Blend>
+                    <topInput>
+                        <Reflection bottomOpacity="0.53" fraction="0.93" topOpacity="0.0" />
+                    </topInput>
+                </Blend>
+            </topInput>
+        </Blend>
+    </effect>
+    <cursor>
+        <Cursor fx:constant="DEFAULT" />
+    </cursor>
+    <Label alignment="BOTTOM_LEFT" contentDisplay="CENTER" layoutX="190.0" layoutY="152.0" prefHeight="45.0" prefWidth="132.0" text="Sign Up" textAlignment="RIGHT" textFill="#545454">
+        <font>
+            <Font name="Ebrima Bold" size="35.0" />
+        </font>
+    </Label>
+    <TextField layoutX="53.0" layoutY="224.0" prefHeight="38.0" prefWidth="385.0" promptText="Name">
+        <effect>
+            <Blend />
+        </effect>
+        <font>
+            <Font size="13.0" />
+        </font>
+    </TextField>
+    <TextField accessibleRole="PASSWORD_FIELD" layoutX="53.0" layoutY="287.0" prefHeight="38.0" prefWidth="385.0" promptText="Password">
+        <effect>
+            <Blend />
+        </effect>
+        <font>
+            <Font size="13.0" />
+        </font>
+    </TextField>
+    <TextField layoutX="53.0" layoutY="348.0" prefHeight="38.0" prefWidth="385.0" promptText="Confirm Password">
+        <effect>
+            <Blend />
+        </effect>
+        <font>
+            <Font size="13.0" />
+        </font>
+    </TextField>
+    <Button fx:id="signUpButton" alignment="CENTER" layoutX="53.0" layoutY="476.0" mnemonicParsing="false" onAction="#loginButton" prefHeight="38.0" prefWidth="385.0" style="-fx-background-color: #13020f;" text="Sign Up" textFill="#e4e4e4">
+        <font>
+            <Font size="15.0" />
+        </font>
+        <effect>
+            <DropShadow offsetY="4.0">
+            <color>
+               <Color red="0.5526315569877625" green="0.5526315569877625" blue="0.5526315569877625" />
+            </color></DropShadow>
+        </effect>
+        <cursor>
+            <Cursor fx:constant="HAND" />
+        </cursor>
+    </Button>
+   <FontAwesomeIcon fx:id="backButton" fill="#545454" glyphName="ARROW_LEFT" layoutX="23.0" layoutY="37.0" size="1.25em" text="" wrappingWidth="23.0">
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor></FontAwesomeIcon>
+   <Text fx:id="passwordMissMatchText" layoutX="53.0" layoutY="406.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+   <Text fx:id="uncheckedCheckBoxText" layoutX="53.0" layoutY="455.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+</AnchorPane>

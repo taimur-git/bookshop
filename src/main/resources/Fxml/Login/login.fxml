@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="650.0" style="-fx-background-color: fbfefb;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tokai.Controllers.LoginController">
+    <VBox alignment="CENTER" layoutY="-4.0" prefHeight="607.0" prefWidth="0.0" style="-fx-background-color: #13020f;" />
+    <Label alignment="CENTER" focusTraversable="false" layoutX="243.0" layoutY="160.0" text="Welcome Back" textAlignment="RIGHT" textFill="#545454">
+        <font>
+            <Font name="Ebrima Bold" size="24.0" />
+        </font>
+    </Label>
+    <Label alignment="CENTER" focusTraversable="false" layoutX="262.0" layoutY="202.0" text="Sign in to Continue" textAlignment="RIGHT" textFill="#a3a3a3">
+        <font>
+            <Font name="Ebrima Bold" size="14.0" />
+        </font>
+    </Label>
+    <TextField fx:id="email" focusTraversable="false" layoutX="213.0" layoutY="241.0" prefHeight="38.0" prefWidth="225.0" promptText="Email">
+        <font>
+            <Font size="13.0" />
+        </font>
+    </TextField>
+    <PasswordField fx:id="password" focusTraversable="false" layoutX="213.0" layoutY="289.0" prefHeight="38.0" prefWidth="225.0" promptText="Password">
+        <font>
+            <Font size="13.0" />
+        </font>
+    </PasswordField>
+    <Button fx:id="loginButton" alignment="CENTER" layoutX="213.0" layoutY="340.0" mnemonicParsing="false" onAction="#onLoginButton" prefHeight="38.0" prefWidth="225.0" style="-fx-background-color: #13020f;" text="Login" textFill="#e4e4e4">
+        <font>
+            <Font size="15.0" />
+        </font>
+        <effect>
+            <DropShadow offsetY="4.0" />
+        </effect>
+        <cursor>
+            <Cursor fx:constant="HAND" />
+        </cursor>
+    </Button>
+    <Label layoutX="317.0" layoutY="391.0" text="Or" textFill="#a3a3a3">
+        <font>
+            <Font size="15.0" />
+        </font>
+    </Label>
+    <Button fx:id="signUPButton" alignment="CENTER" defaultButton="true" focusTraversable="false" layoutX="213.0" layoutY="422.0" mnemonicParsing="false" onAction="#onSignUp" prefHeight="38.0" prefWidth="225.0" style="-fx-background-color: #13020f;" text="Create account" textFill="#e4e4e4">
+        <font>
+            <Font size="15.0" />
+        </font>
+        <effect>
+            <DropShadow offsetY="4.0" />
+        </effect>
+        <cursor>
+            <Cursor fx:constant="HAND" />
+        </cursor>
+    </Button>
+   <Text fx:id="emilOrPasswordIncorrectText" fill="RED" layoutX="373.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0">
+      <effect>
+         <Glow level="0.13" />
+      </effect></Text>
+</AnchorPane>

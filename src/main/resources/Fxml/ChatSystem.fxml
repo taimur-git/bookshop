@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: 00b4d8;" styleClass="anchor-pane" stylesheets="@ChatSystem.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+
+    <!-- Chat history -->
+    <VBox prefHeight="400.0" style="-fx-background-color: #F0F0F0;" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10" AnchorPane.topAnchor="10">
+        <ScrollPane prefHeight="400.0">
+            <VBox fx:id="chatHistoryVBox" prefWidth="565.0" style="-fx-padding: 10px;" />
+         <styleClass>
+            <String fx:value="chatBubble" />
+            <String fx:value="agentBubble" />
+            <String fx:value="userBubble" />
+         </styleClass>
+        </ScrollPane>
+    </VBox>
+
+    <!-- Chat input -->
+    <HBox prefHeight="50.0" style="-fx-background-color: #F0F0F0;" AnchorPane.bottomAnchor="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10">
+        <TextField fx:id="chatInputTextField" prefWidth="500.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #CCCCCC; -fx-border-radius: 5px; -fx-padding: 5px;" styleClass="chatBubble" />
+        <Button fx:id="sendButton" onAction="#handleSendButtonAction" prefWidth="75.0" style="-fx-background-color: #4CAF50; -fx-text-fill: #FFFFFF; -fx-border-radius: 5px; -fx-padding: 5px; -fx-border-color: #4CAF50;" styleClass="sendButton" stylesheets="@ChatSystem.css" text="Send" />
+    </HBox>
+
+</AnchorPane>

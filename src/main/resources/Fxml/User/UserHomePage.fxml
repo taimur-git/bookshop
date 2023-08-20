@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #FFF9EC;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tokai.Controllers.User.UserHomePageController">
+   <top>
+      <AnchorPane BorderPane.alignment="CENTER">
+         <HBox fx:id="menuBar" alignment="CENTER" layoutX="115.0" layoutY="68.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="54.0" prefWidth="896.0" style="-fx-background-color: #DD6B51; -fx-border-radius: 12; -fx-background-radius: 12;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="115.0" AnchorPane.rightAnchor="269.0" AnchorPane.topAnchor="68.0">
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+            <effect>
+               <DropShadow offsetY="4.0">
+                  <color>
+                     <Color red="0.7631579041481018" green="0.7207602262496948" blue="0.7207602262496948" />
+                  </color>
+               </DropShadow>
+            </effect>
+            <AnchorPane prefHeight="54.0" prefWidth="895.0">
+               <Label fx:id="homeButton" accessibleRole="BUTTON" alignment="CENTER" layoutX="67.0" layoutY="4.0" prefHeight="30.0" prefWidth="83.0" text="Home" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <font>
+                     <Font name="Ebrima Bold" size="24.0" />
+                  </font>
+               </Label>
+               <Label fx:id="projectsButton" accessibleRole="BUTTON" layoutX="215.0" prefHeight="35.0" prefWidth="94.0" text="Projects" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <font>
+                     <Font name="System Bold" size="24.0" />
+                  </font>
+               </Label>
+               <Label fx:id="tradeMenuButton" accessibleRole="BUTTON" alignment="CENTER" layoutX="374.0" layoutY="-1.0" prefHeight="31.0" prefWidth="93.0" text="Trade" textFill="WHITE" AnchorPane.bottomAnchor="1.0" AnchorPane.topAnchor="-1.0">
+                  <font>
+                     <Font name="Ebrima Bold" size="24.0" />
+                  </font>
+               </Label>
+               <Label fx:id="donateMenuButton" accessibleRole="BUTTON" alignment="CENTER" layoutX="514.0" prefHeight="35.0" prefWidth="111.0" text="Donate" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <font>
+                     <Font name="System Bold" size="24.0" />
+                  </font>
+               </Label>
+               <FontAwesomeIcon fx:id="rewardsIconButton" accessibleRole="BUTTON" fill="WHITE" glyphName="STAR" layoutX="691.0" layoutY="35.0" size="2em" text="" wrappingWidth="12.642857551574707" />
+               <Label fx:id="rewardsButton" accessibleRole="BUTTON" alignment="CENTER" layoutX="704.0" prefHeight="30.0" prefWidth="138.0" text="Rewards" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <font>
+                     <Font name="System Bold" size="24.0" />
+                  </font>
+               </Label>
+               <FontAwesomeIcon fx:id="homeIconButton" accessibleRole="BUTTON" fill="WHITE" glyphName="HOME" layoutX="33.0" layoutY="40.0" size="3em" text="" textAlignment="CENTER" AnchorPane.bottomAnchor="8.85714340209961" AnchorPane.topAnchor="9.14285659790039">
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+               </FontAwesomeIcon>
+            </AnchorPane>
+         </HBox>
+         <FontAwesomeIcon fx:id="userProfileButton" accessibleRole="BUTTON" fill="#545454" glyphName="USER" layoutX="1160.0" layoutY="110.0" size="3.5em" text="" AnchorPane.bottomAnchor="6.0" AnchorPane.rightAnchor="87.0" AnchorPane.topAnchor="74.0">
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+            <effect>
+               <DropShadow offsetY="4.0">
+                  <color>
+                     <Color red="0.8289473652839661" green="0.8289473652839661" blue="0.8289473652839661" />
+                  </color>
+               </DropShadow>
+            </effect>
+         </FontAwesomeIcon>
+         <Label fx:id="pointsLabel" alignment="CENTER" layoutX="1056.0" layoutY="79.0" prefHeight="28.0" prefWidth="87.0" style="-fx-background-color: ffc000;-fx-border-radius: 10; -fx-background-radius: 8;" text="1000" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="137.0" AnchorPane.topAnchor="79.0">
+            <font>
+               <Font name="System Bold" size="24.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+            <effect>
+               <DropShadow offsetY="4.0">
+                  <color>
+                     <Color red="0.8157894611358643" green="0.8157894611358643" blue="0.8157894611358643" />
+                  </color>
+               </DropShadow>
+            </effect>
+         </Label>
+         <FontAwesomeIcon fill="#545454" glyphName="CARET_DOWN" layoutX="1231.0" layoutY="105.0" selectionStart="1" size="2.5em" text="" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="80.0">
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </FontAwesomeIcon>
+         <FontAwesomeIcon fx:id="notificationButton" fill="#d1363600" glyphName="EXCLAMATION_CIRCLE" layoutX="1187.0" layoutY="115.0" size="1.5em" text="" AnchorPane.bottomAnchor="4.428571701049805" AnchorPane.rightAnchor="77.5714282989502" AnchorPane.topAnchor="99.5714282989502">
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </FontAwesomeIcon>
+      </AnchorPane>
+   </top>
+   <center>
+      <AnchorPane BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <Text fill="#dd6b51" layoutX="118.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Turn Your" wrappingWidth="310.3190002441406" AnchorPane.bottomAnchor="364.3828125" AnchorPane.leftAnchor="118.0" AnchorPane.rightAnchor="851.6809997558594" AnchorPane.topAnchor="163.78125">
+            <font>
+               <Font name="Ebrima Bold" size="56.0" />
+            </font>
+         </Text>
+         <Text fill="#dd6b51" layoutX="554.0" layoutY="331.0" strokeType="OUTSIDE" strokeWidth="0.0" text="With us..." textAlignment="RIGHT" wrappingWidth="90.2138671875">
+            <font>
+               <Font name="Ebrima Bold" size="18.0" />
+            </font>
+         </Text>
+         <Text fill="#ce4729" layoutX="367.0" layoutY="138.0" strokeLineCap="ROUND" strokeType="OUTSIDE" strokeWidth="0.0" text="Trash" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="414.4700012207031" AnchorPane.bottomAnchor="360.234375" AnchorPane.leftAnchor="366.4700012207031" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="38.234375">
+            <font>
+               <Font name="Ebrima Bold" size="160.0" />
+            </font>
+         </Text>
+         <Text fill="#dd6b51" layoutX="334.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="into" wrappingWidth="63.734375">
+            <font>
+               <Font name="Ebrima Bold" size="30.0" />
+            </font>
+         </Text>
+         <ImageView fitHeight="500.0" fitWidth="713.0" layoutX="521.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="12.742095947265625" AnchorPane.rightAnchor="46.0" AnchorPane.topAnchor="111.0">
+            <Image url="@../../Images/Seller/SellerHomePage/HomePAge.png" />
+         </ImageView>
+         <ImageView fx:id="tradeButton" fitHeight="72.0" fitWidth="181.0" layoutX="319.0" layoutY="448.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="78.0" AnchorPane.leftAnchor="318.4418640136719" AnchorPane.rightAnchor="793.5581359863281" AnchorPane.topAnchor="448.0">
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+            <Image url="@../../Icons/SellerHomePage/TinyImage Compressor (Community) 30-Apr-2023-102502.gif" />
+         </ImageView>
+         <Text fill="#ce4729" layoutX="108.0" layoutY="367.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Are you looking for an easy and convenient way to get rid of your recyclable trash while earning some extra cash? Look no further .." textAlignment="RIGHT" wrappingWidth="449.8834686279297" AnchorPane.bottomAnchor="177.59765625" AnchorPane.leftAnchor="107.88346862792969" AnchorPane.rightAnchor="722.1165313720703" AnchorPane.topAnchor="347.40234375">
+            <font>
+               <Font name="Ebrima" size="18.0" />
+            </font>
+            <effect>
+               <Glow level="1.0" />
+            </effect>
+         </Text>
+         <Text fill="#6bdd99" layoutX="393.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cash" wrappingWidth="291.61328125">
+            <font>
+               <Font name="Ebrima Bold" size="120.0" />
+            </font>
+         </Text>
+         <ImageView fx:id="donateButton" accessibleRole="BUTTON" fitHeight="72.0" fitWidth="181.0" layoutX="136.0" layoutY="447.0" pickOnBounds="true" preserveRatio="true">
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+            <Image url="@../../Icons/SellerHomePage/donate.gif" />
+         </ImageView>
+      </AnchorPane>
+   </center>
+</BorderPane>

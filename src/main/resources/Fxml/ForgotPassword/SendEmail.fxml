@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="368.0" style="-fx-background-color: fbfefb;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tokai.Controllers.ForgotPassword.SendEmailController">
+   <children>
+      <ImageView fitHeight="89.0" fitWidth="143.0" layoutX="129.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Icons/ForgotPassword/password%20ui.gif" />
+         </image>
+      </ImageView>
+      <Label layoutX="106.0" layoutY="152.0" prefHeight="28.0" prefWidth="167.0" text="Check your mail" textAlignment="CENTER" textFill="#545454">
+         <font>
+            <Font name="Ebrima Bold" size="20.0" />
+         </font>
+      </Label>
+      <Text fill="#545454" layoutX="106.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="We have sent a password recover instructions to your email. " textAlignment="CENTER" wrappingWidth="156.6666238307953">
+         <font>
+            <Font name="Ebrima" size="13.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="nextButton" fitHeight="67.0" fitWidth="71.0" layoutX="151.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Icons/ForgotPassword/right_arrow.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <FontAwesomeIcon fx:id="backButton" fill="#545454" glyphName="ARROW_LEFT" layoutX="23.0" layoutY="37.0" size="1.25em" text="">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </FontAwesomeIcon>
+   </children>
+</AnchorPane>

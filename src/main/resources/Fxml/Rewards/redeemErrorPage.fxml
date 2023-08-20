@@ -5,7 +5,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane prefHeight="201.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tokai.Controllers.Rewards.redeemErrorController">
+<AnchorPane prefHeight="201.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bookshop.Controllers.Rewards.redeemErrorController">
    <children>
       <Text fill="#dd6b51" layoutX="71.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Congratulations !!">
          <font>

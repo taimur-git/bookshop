@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane prefHeight="244.0" prefWidth="496.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tokai.Controllers.Trade.ConfrimPickUpController">
+<AnchorPane prefHeight="244.0" prefWidth="496.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bookshop.Controllers.Trade.ConfrimPickUpController">
    <children>
       <ImageView fitHeight="110.0" fitWidth="145.0" layoutX="362.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true">
          <image>

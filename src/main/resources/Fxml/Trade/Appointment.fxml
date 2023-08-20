@@ -12,7 +12,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="522.0" prefWidth="500.0" style="-fx-background-color: fbfefb;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tokai.Controllers.Trade.AppointmentController">
+<AnchorPane prefHeight="522.0" prefWidth="500.0" style="-fx-background-color: fbfefb;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bookshop.Controllers.Trade.AppointmentController">
     <effect>
         <Blend opacity="0.6">
             <topInput>

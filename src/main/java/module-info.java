@@ -9,15 +9,15 @@ module com.tokai {
     requires com.almasb.fxgl.all;
     requires fontawesomefx;
 
-    opens com.tokai to javafx.fxml;
-    exports com.tokai;
-    exports com.tokai.Controllers;
-    exports com.tokai.Controllers.User;
-    exports com.tokai.Controllers.ForgotPassword;
-    exports com.tokai.Controllers.Trade;
-    exports com.tokai.Controllers.Projects;
-    exports com.tokai.Controllers.Rewards;
-    exports com.tokai.Models;
-    exports com.tokai.Views;
+    opens com.bookshop to javafx.fxml;
+    exports com.bookshop;
+    exports com.bookshop.Controllers;
+    exports com.bookshop.Controllers.User;
+    exports com.bookshop.Controllers.ForgotPassword;
+    exports com.bookshop.Controllers.Trade;
+    exports com.bookshop.Controllers.Projects;
+    exports com.bookshop.Controllers.Rewards;
+    exports com.bookshop.Models;
+    exports com.bookshop.Views;
 
 }

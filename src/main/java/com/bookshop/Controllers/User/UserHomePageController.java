@@ -23,7 +23,6 @@ public class UserHomePageController implements Initializable {
 
     public static Label static_pointsLabel;
     public FontAwesomeIcon userProfileButton;
-    public Label projectsButton;
     public FontAwesomeIcon rewardsIconButton;
     public Label rewardsButton;
     public Label tradeMenuButton;
@@ -42,11 +41,7 @@ public class UserHomePageController implements Initializable {
         Model.getInstance().getViewsFactory().showRewardsPage();
     }
 
-    public void projectsOnClick(){
-        Stage stage = (Stage)homeButton.getScene().getWindow();
-        Model.getInstance().getViewsFactory().closeStage(stage);
-        Model.getInstance().getViewsFactory().showProjectssPage();
-    }
+
 
 
     public void tradeButtonOnClick() {
@@ -112,7 +107,6 @@ public class UserHomePageController implements Initializable {
         homeIconButton.setOnMouseClicked(mouseEvent -> homeOnClick());
         tradeButton.setOnMouseClicked(mouseEvent -> tradeButtonOnClick());
         tradeMenuButton.setOnMouseClicked(mouseEvent -> tradeButtonOnClick());
-        projectsButton.setOnMouseClicked(mouseEvent -> projectsOnClick());
         rewardsButton.setOnMouseClicked(mouseEvent -> rewardsOnClick());
         rewardsIconButton.setOnMouseClicked(mouseEvent -> rewardsOnClick());
         donateMenuButton.setOnMouseClicked(mouseEvent -> tradeButtonOnClick());

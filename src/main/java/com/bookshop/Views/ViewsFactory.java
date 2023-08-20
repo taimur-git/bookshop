@@ -17,14 +17,13 @@ public class ViewsFactory {
     private FXMLLoader tradePage;
     private FXMLLoader pickUpPage;
     private FXMLLoader pickUpConfirmationPage;
-    private FXMLLoader projectsPage;
     private FXMLLoader rewardsPage;
     private FXMLLoader pointsRedeemedPage;
     private FXMLLoader redeemErrorPage;
 
+    private FXMLLoader homePage;
 
-
-
+    private FXMLLoader bookshopPage;
 
 
     public ViewsFactory(){}
@@ -100,10 +99,6 @@ public class ViewsFactory {
         this.setStage(rewardsPage);
     }
 
-    public void showProjectssPage(){
-        this.projectsPage = new FXMLLoader(getClass().getResource("/Fxml/Projects/Projects.fxml"));
-        this.setStage(projectsPage);
-    }
     public void showCreateNewPasswordWindow(){
         this.createNewPasswordPage = new FXMLLoader(getClass().getResource("/Fxml/ForgotPassword/CreateNewPassword.fxml"));
 
@@ -162,6 +157,15 @@ public class ViewsFactory {
 
     }
 
+    public void showHomePage(){
+        this.homePage = new FXMLLoader(getClass().getResource("/Fxml/Home.fxml"));
+        this.setStage(homePage);
+    }
+
+    public void showBookshopPage(){
+        this.bookshopPage = new FXMLLoader(getClass().getResource("/Fxml/Bookshop/Bookshop.fxml"));
+        this.setStage(bookshopPage);
+    }
 
 
 }

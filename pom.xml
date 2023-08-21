@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com</groupId>
-    <artifactId>Tokai</artifactId>
+    <artifactId>UIU Bookshop</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>Tokai</name>
+    <name>UIU Bookshop</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

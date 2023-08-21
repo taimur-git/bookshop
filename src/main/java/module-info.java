@@ -14,9 +14,9 @@ module com.tokai {
     exports com.bookshop.Controllers;
     exports com.bookshop.Controllers.User;
     exports com.bookshop.Controllers.ForgotPassword;
-    exports com.bookshop.Controllers.Trade;
+    //exports com.bookshop.Controllers.Trade;
     //exports com.bookshop.Controllers.Projects;
-    exports com.bookshop.Controllers.Rewards;
+    //exports com.bookshop.Controllers.Rewards;
     exports com.bookshop.Models;
     exports com.bookshop.Views;
 

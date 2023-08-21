@@ -1,6 +1,5 @@
 package com.bookshop.Controllers;
 
-import com.bookshop.Models.CartItem;
 import com.bookshop.Models.CheckoutItem;
 import com.bookshop.Models.Model;
 import javafx.collections.FXCollections;

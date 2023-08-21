@@ -53,12 +53,6 @@ public class DBDriver {
         }
         return resultSet;
     }
-    public ResultSet getAllMaterials(){
-        Statement statement;
-        ResultSet resultSet = null;
-        String sqlQuery = "Select * FROM materials";
-        return null;
-    }
 
     public ResultSet checkUserExists(String userName) {
         PreparedStatement statement;

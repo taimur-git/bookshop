@@ -13,13 +13,6 @@ public class ViewsFactory {
     private FXMLLoader sendEmailPage;
     private FXMLLoader otpPage;
     private FXMLLoader createNewPasswordPage;
-    private FXMLLoader userHomePage;
-    private FXMLLoader tradePage;
-    private FXMLLoader pickUpPage;
-    private FXMLLoader pickUpConfirmationPage;
-    private FXMLLoader rewardsPage;
-    private FXMLLoader pointsRedeemedPage;
-    private FXMLLoader redeemErrorPage;
 
     private FXMLLoader homePage;
 
@@ -98,10 +91,6 @@ public class ViewsFactory {
         this.setStage(this.otpPage);
     }
 
-    public void showRewardsPage(){
-        this.rewardsPage = new FXMLLoader(getClass().getResource("/Fxml/Rewards/Rewards.fxml"));
-        this.setStage(rewardsPage);
-    }
 
     public void showCreateNewPasswordWindow(){
         this.createNewPasswordPage = new FXMLLoader(getClass().getResource("/Fxml/ForgotPassword/CreateNewPassword.fxml"));
@@ -113,53 +102,7 @@ public class ViewsFactory {
             Seller views
      */
 
-    public void showUserHomeWindow(){
 
-        this.userHomePage = new FXMLLoader(getClass().getResource("/Fxml/User/UserHomePage.fxml"));
-
-        this.setStage(this.userHomePage);
-    }
-
-
-
-    public FXMLLoader getTradePage() {
-        return tradePage;
-    }
-
-    public void showTradeWindow(){
-
-        this.tradePage = new FXMLLoader(getClass().getResource("/Fxml/Trade/Trade.fxml"));
-        signupPage = tradePage.getController();
-        this.setStage(tradePage);
-    }
-
-    public void showPickUpWindow(){
-
-        this.pickUpPage = new FXMLLoader(getClass().getResource("/Fxml/Trade/Appointment.fxml"));
-
-        this.setStage(pickUpPage);
-    }
-
-    public void showPickUpConfirmationPage(){
-
-        this.pickUpConfirmationPage = new FXMLLoader(getClass().getResource("/Fxml/Trade/ConfirmPickUp.fxml"));
-        this.setStage(pickUpConfirmationPage);
-
-    }
-
-    public void showPointsRedeemedPage(){
-
-        this.pointsRedeemedPage = new FXMLLoader(getClass().getResource("/Fxml/Rewards/pointsRedeemedPage.fxml"));
-        this.setStage(pointsRedeemedPage);
-
-    }
-
-    public void showRedeemErrorPage(){
-
-        this.redeemErrorPage = new FXMLLoader(getClass().getResource("/Fxml/Rewards/redeemErrorPage.fxml"));
-        this.setStage(redeemErrorPage);
-
-    }
 
     public void showHomePage(){
         this.homePage = new FXMLLoader(getClass().getResource("/Fxml/Home.fxml"));

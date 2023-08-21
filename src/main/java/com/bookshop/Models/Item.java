@@ -35,4 +35,16 @@ public class Item {
     public String getItemPrice() {
         return Integer.toString(price);
     }
+
+    public int getItemId() {
+        return id;
+    }
+
+    public String getImagePath() {
+        return image;
+    }
+
+    public String getCategory() {
+        return category;
+    }
 }

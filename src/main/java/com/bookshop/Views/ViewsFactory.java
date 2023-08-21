@@ -24,6 +24,10 @@ public class ViewsFactory {
     private FXMLLoader homePage;
 
     private FXMLLoader bookshopPage;
+    private FXMLLoader storeFrontPage;
+
+    private FXMLLoader cartPage;
+    private FXMLLoader ordersPage;
 
 
     public ViewsFactory(){}
@@ -167,5 +171,19 @@ public class ViewsFactory {
         this.setStage(bookshopPage);
     }
 
+    public void showStoreFrontPage(){
+        this.storeFrontPage = new FXMLLoader(getClass().getResource("/Fxml/storefront.fxml"));
+        this.setStage(storeFrontPage);
+    }
 
+
+    public void showCartPage() {
+        this.cartPage = new FXMLLoader(getClass().getResource("/Fxml/Cart.fxml"));
+        this.setStage(cartPage);
+    }
+
+    public void showOrdersPage() {
+        this.ordersPage = new FXMLLoader(getClass().getResource("/Fxml/Orders.fxml"));
+        this.setStage(ordersPage);
+    }
 }

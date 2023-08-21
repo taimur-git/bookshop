@@ -46,4 +46,8 @@ public class CartItem {
                 ", quantity=" + quantity +
                 '}';
     }
+
+    public double getPrice() {
+        return totalPrice;
+    }
 }

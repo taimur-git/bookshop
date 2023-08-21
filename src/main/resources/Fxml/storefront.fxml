@@ -6,11 +6,21 @@
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.bookshop.Controllers.StorefrontController"
-      prefHeight="400.0" prefWidth="600.0">
+      prefHeight="600.0" prefWidth="800.0"
+      stylesheets="@../Styles/styles.css">
+
+    <HBox alignment="CENTER" spacing="10">
+        <TextField fx:id="searchField" promptText="Search by item name..." />
+        <Button fx:id="checkoutButton" text="Checkout" />
+    </HBox>
 
     <!-- Item Cards -->
     <FlowPane fx:id="itemCards" hgap="10" vgap="10" alignment="CENTER">
         <!-- Each card will be added here dynamically -->
     </FlowPane>
+
+    <GridPane fx:id="itemCardsGrid" hgap="10" vgap="10" alignment="CENTER">
+        <!-- Item cards will be added here -->
+    </GridPane>
 
 </VBox>

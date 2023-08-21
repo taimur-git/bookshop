@@ -42,7 +42,7 @@ public class LoginController implements Initializable {
 
                 Stage stage = (Stage)email.getScene().getWindow();
                 Model.getInstance().getViewsFactory().closeStage(stage);
-                Model.getInstance().getViewsFactory().showBookshopPage();//showHomePage();//showUserHomeWindow();
+                Model.getInstance().getViewsFactory().showStoreFrontPage();//showBookshopPage();//showHomePage();//showUserHomeWindow();
             }else{
                 this.emilOrPasswordIncorrectText.setText("Invalid Email or password");
             }

@@ -98,4 +98,12 @@ public class Model {
     public boolean getLoginFlag() {
         return this.loginFlag;
     }
+
+    public String getCurrentCustomerId() {
+        User currentUser = getUser(); // Get the current user from the model
+        if (currentUser != null) {
+            return currentUser.getUserID(); // Replace with the method to get the user ID
+        }
+        return "guest"; // Return a default value or handle missing user
+    }
 }

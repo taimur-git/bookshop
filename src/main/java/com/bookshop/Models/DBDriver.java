@@ -121,4 +121,44 @@ public class DBDriver {
         }
         return items;
     }
+
+    public void addToCart(String customerId, int itemId, int quantity) {
+        String sqlQuery = "INSERT INTO cart (customer_id, item_id, quantity) VALUES (?, ?, ?)";
+        try (PreparedStatement preparedStatement = conn.prepareStatement(sqlQuery)) {
+            preparedStatement.setString(1, customerId);
+            preparedStatement.setInt(2, itemId);
+            preparedStatement.setInt(3, quantity);
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public List<CheckoutItem> getCartItemsForCustomer(String currentCustomerId) {
+        List<CheckoutItem> cartItems = new ArrayList<>();
+        String sqlQuery = "SELECT item_name, quantity, item_price " +
+                "FROM cart " +
+                "JOIN item ON cart.item_id = item.item_id " +
+                "WHERE customer_id = ?";
+
+        try (PreparedStatement preparedStatement = conn.prepareStatement(sqlQuery)) {
+            preparedStatement.setString(1, currentCustomerId);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    String itemName = resultSet.getString("item_name");
+                    int quantity = resultSet.getInt("quantity");
+                    int price = resultSet.getInt("item_price");
+
+                    CheckoutItem checkoutItem = new CheckoutItem(itemName, quantity, price);
+                    cartItems.add(checkoutItem);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return cartItems;
+    }
 }

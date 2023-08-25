@@ -9,6 +9,7 @@ public class CheckoutItem {
         this.quantity = quantity;
     }
 
+
     public Item getItem() {
         return item;
     }

@@ -1,10 +1,13 @@
 package com.bookshop.Models;
 
 
+import javafx.application.Platform;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.function.Consumer;
 
 public class DBDriver {
     private Connection conn;
@@ -158,6 +161,19 @@ public class DBDriver {
 
         return cartItems;
     }
+
+
+    //public List<CheckoutItem>
+    public void getCartItemsForCustomerAsync(String currentCustomerId, Consumer<List<CheckoutItem>> callback) {
+        Runnable databaseTask = () -> {
+            List<CheckoutItem> cartItems = getCartItemsForCustomer(currentCustomerId);
+            Platform.runLater(() -> callback.accept(cartItems)); // Update UI in JavaFX thread
+        };
+
+        Thread thread = new Thread(databaseTask);
+        thread.start();
+    }
+
     public void createOrder(String customerId) {
         String sqlQuery = "INSERT INTO orders (customer_id) VALUES (?)";
         try (PreparedStatement preparedStatement = conn.prepareStatement(sqlQuery, Statement.RETURN_GENERATED_KEYS)) {
@@ -196,4 +212,79 @@ public class DBDriver {
             e.printStackTrace();
         }
     }
+
+    public List<Order> getAllOrdersForCustomer(String customerId) {
+        List<Order> orders = new ArrayList<>();
+
+        String sqlQuery = "SELECT * FROM orders WHERE customer_id = ?";
+        try (PreparedStatement preparedStatement = conn.prepareStatement(sqlQuery)) {
+            preparedStatement.setString(1, customerId);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    int orderId = resultSet.getInt("order_id");
+                    boolean paid = resultSet.getBoolean("paid");
+
+                    List<CheckoutItem> items = getOrderItems(orderId);
+                    Order order = new Order(orderId, customerId, paid, items);
+                    orders.add(order);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return orders;
+    }
+
+    public List<Order> getAllOrdersForAllCustomers() {
+        List<Order> orders = new ArrayList<>();
+
+        String sqlQuery = "SELECT * FROM orders";
+        try (PreparedStatement preparedStatement = conn.prepareStatement(sqlQuery);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+
+            while (resultSet.next()) {
+                int orderId = resultSet.getInt("order_id");
+                String customerId = resultSet.getString("customer_id");
+                boolean paid = resultSet.getBoolean("paid");
+
+                List<CheckoutItem> items = getOrderItems(orderId);
+                Order order = new Order(orderId, customerId, paid, items);
+                orders.add(order);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return orders;
+    }
+
+    private List<CheckoutItem> getOrderItems(int orderId) {
+        List<CheckoutItem> items = new ArrayList<>();
+
+        String sqlQuery = "SELECT item.item_id as id, item_name, quantity, item_price FROM order_item " +
+                "JOIN item ON order_item.item_id = item.item_id " +
+                "WHERE order_id = ?";
+        try (PreparedStatement preparedStatement = conn.prepareStatement(sqlQuery)) {
+            preparedStatement.setInt(1, orderId);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    int id = resultSet.getInt("id");
+                    String itemName = resultSet.getString("item_name");
+                    int quantity = resultSet.getInt("quantity");
+                    int price = resultSet.getInt("item_price");
+                    Item item = new Item(id, itemName, price);
+                    CheckoutItem checkoutItem = new CheckoutItem(item, quantity);
+                    items.add(checkoutItem);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return items;
+    }
+
 }

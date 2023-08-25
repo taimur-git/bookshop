@@ -1,5 +1,6 @@
 package com.bookshop.Controllers;
 
+import com.bookshop.Models.CheckoutItem;
 import com.bookshop.Models.Item;
 import com.bookshop.Models.Model;
 import javafx.collections.FXCollections;
@@ -20,6 +21,7 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.List;
@@ -51,6 +53,8 @@ public class StorefrontController implements Initializable {
         });
         checkoutButton.setOnAction(event -> Model.getInstance().getViewsFactory().showCartPage());
     }
+
+
 
     //private void showCartPage() {
     //}
@@ -174,6 +178,12 @@ public class StorefrontController implements Initializable {
     }
 
     public void logoutButtonAction(ActionEvent actionEvent) {
+        Model.getInstance().getUser().clearUserData();
+Model.getInstance().getViewsFactory().showLoginWindow();
+
+        Stage storefrontStage = (Stage) viewOrders.getScene().getWindow();
+        storefrontStage.close();
+
     }
 
     public void viewOrdersButtonAction(ActionEvent actionEvent) {

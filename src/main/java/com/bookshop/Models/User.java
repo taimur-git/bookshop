@@ -4,7 +4,6 @@ public class User {
     private String userID;
     private String name;
     private int admin;
-    private int points;
 
     public User(){
 
@@ -24,7 +23,7 @@ public class User {
         return name;
     }
 
-    public int getPoints() { return points; }
+
 
     /* SETTERS **/
 
@@ -32,9 +31,6 @@ public class User {
         this.name = name;
     }
 
-    public void setPoints(int points) {
-        this.points = points;
-    }
 
     public void serUserData(String userID,
                             String name,
@@ -46,5 +42,11 @@ public class User {
 
     public String getId() {
         return userID;
+    }
+
+    public void clearUserData() {
+        this.userID = null;
+        this.name = null;
+        this.admin = 0;
     }
 }

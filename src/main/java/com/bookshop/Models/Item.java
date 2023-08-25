@@ -19,6 +19,11 @@ public class Item {
         this.category = category;
         this.image = image;
     }
+    public Item(int itemId, String itemName, int price) {
+        this.id = itemId;
+        this.name = itemName;
+        this.price = price;
+    }
 
     public ObservableValue<String> itemPriceProperty() {
         return new SimpleStringProperty(Integer.toString(price));
@@ -34,6 +39,9 @@ public class Item {
 
     public String getItemPrice() {
         return Integer.toString(price);
+    }
+    public int getItemPriceInt() {
+        return price;
     }
 
     public int getItemId() {

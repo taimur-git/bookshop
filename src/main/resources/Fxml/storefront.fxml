@@ -12,6 +12,9 @@
     <HBox alignment="CENTER" spacing="10">
         <TextField fx:id="searchField" promptText="Search by item name..." />
         <Button fx:id="checkoutButton" text="Checkout" />
+        <Button fx:id="logOutButton" text="Log Out" onAction="#logoutButtonAction"/>
+        <Button fx:id="viewOrders" text="View Orders" onAction="#viewOrdersButtonAction"/>
+
     </HBox>
 
     <!-- Item Cards -->

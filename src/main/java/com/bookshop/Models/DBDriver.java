@@ -129,9 +129,10 @@ public class DBDriver {
         }
     }
 
+
     public List<CheckoutItem> getCartItemsForCustomer(String currentCustomerId) {
         List<CheckoutItem> cartItems = new ArrayList<>();
-        String sqlQuery = "SELECT item_name, quantity, item_price " +
+        String sqlQuery = "SELECT cart.item_id as item_id, item_name, item_price, quantity " +
                 "FROM cart " +
                 "JOIN item ON cart.item_id = item.item_id " +
                 "WHERE customer_id = ?";
@@ -141,11 +142,13 @@ public class DBDriver {
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 while (resultSet.next()) {
+                    int itemId = resultSet.getInt("item_id");
                     String itemName = resultSet.getString("item_name");
                     int quantity = resultSet.getInt("quantity");
                     int price = resultSet.getInt("item_price");
 
-                    CheckoutItem checkoutItem = new CheckoutItem(itemName, quantity, price);
+                    Item item = new Item(itemId, itemName, price);
+                    CheckoutItem checkoutItem = new CheckoutItem(item, quantity);
                     cartItems.add(checkoutItem);
                 }
             }
@@ -154,5 +157,43 @@ public class DBDriver {
         }
 
         return cartItems;
+    }
+    public void createOrder(String customerId) {
+        String sqlQuery = "INSERT INTO orders (customer_id) VALUES (?)";
+        try (PreparedStatement preparedStatement = conn.prepareStatement(sqlQuery, Statement.RETURN_GENERATED_KEYS)) {
+            preparedStatement.setString(1, customerId);
+            preparedStatement.executeUpdate();
+
+            // Retrieve the generated keys (including the last inserted ID)
+            ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                int lastInsertedOrderId = generatedKeys.getInt(1);
+                Model.getInstance().setLastOrderId(lastInsertedOrderId); // Update the last order ID in the model
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void insertOrderItem(int orderId, int itemId, int quantity) {
+        String sqlQuery = "INSERT INTO order_item (order_id, item_id, quantity) VALUES (?, ?, ?)";
+        try (PreparedStatement preparedStatement = conn.prepareStatement(sqlQuery)) {
+            preparedStatement.setInt(1, orderId);
+            preparedStatement.setInt(2, itemId);
+            preparedStatement.setInt(3, quantity);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void clearCartForUser(String customerId) {
+        String sqlQuery = "DELETE FROM cart WHERE customer_id = ?";
+        try (PreparedStatement preparedStatement = conn.prepareStatement(sqlQuery)) {
+            preparedStatement.setString(1, customerId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

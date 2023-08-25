@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -31,6 +32,8 @@ public class StorefrontController implements Initializable {
     public GridPane itemCardsGrid;
 
     public Button checkoutButton;
+    public Button logOutButton;
+    public Button viewOrders;
 
     private List<Item> itemList; // Store the original list of items
     private ObservableList<Item> displayedItems; // List for displaying filtered items
@@ -168,5 +171,12 @@ public class StorefrontController implements Initializable {
         Button addToCartButton = new Button("Add to Cart");
         addToCartButton.setOnAction(event -> addToCart(item, 1));
         return addToCartButton;
+    }
+
+    public void logoutButtonAction(ActionEvent actionEvent) {
+    }
+
+    public void viewOrdersButtonAction(ActionEvent actionEvent) {
+        Model.getInstance().getViewsFactory().showOrdersPage();
     }
 }

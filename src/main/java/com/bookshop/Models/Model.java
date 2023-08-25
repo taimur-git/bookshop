@@ -16,7 +16,7 @@ public class Model {
     private VBox allItems;
     private VBox allCartItems;
 
-
+    private int lastOrderId;
 
 
 
@@ -75,5 +75,13 @@ public class Model {
             return currentUser.getUserID(); // Replace with the method to get the user ID
         }
         return "guest"; // Return a default value or handle missing user
+    }
+
+    public void setLastOrderId(int lastOrderId) {
+        this.lastOrderId = lastOrderId;
+    }
+
+    public int getLastOrderId() {
+        return this.lastOrderId;
     }
 }

@@ -19,8 +19,10 @@
             <TableColumn text="Item Name" fx:id="itemNameColumn" />
             <TableColumn text="Quantity" fx:id="quantityColumn" />
             <TableColumn text="Price" fx:id="priceColumn" />
+            <TableColumn text="Subtotal" fx:id="subtotalColumn" />
         </columns>
     </TableView>
     <Label fx:id="totalLabel" />
+    <Button fx:id="checkoutButton" text="Checkout" onAction="#checkoutButtonAction"/>
 
 </VBox>

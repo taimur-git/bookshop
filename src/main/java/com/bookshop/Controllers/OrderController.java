@@ -7,10 +7,14 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -19,7 +23,29 @@ public class OrderController implements Initializable {
     public Button printOrderButton;
     public Accordion ordersAccordion;
 
-    public void printButtonAction(ActionEvent actionEvent) {
+    @FXML
+    private void printButtonAction(ActionEvent actionEvent) {
+        String currentCustomerId = Model.getInstance().getCurrentCustomerId();
+        List<Order> orders = Model.getInstance().getDbDriver().getAllOrdersForCustomer(currentCustomerId);
+
+        String filename = "orders_" + currentCustomerId + ".txt";
+
+        try (PrintWriter writer = new PrintWriter(new FileWriter(filename))) {
+            printOrders(writer, "Not Paid", orders, false);
+            printOrders(writer, "Paid", orders, true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void printOrders(PrintWriter writer, String header, List<Order> orders, boolean isPaid) {
+        writer.println("==" + header + "==");
+        for (Order order : orders) {
+            if (order.isPaid() == isPaid) {
+                writer.println("Order ID: " + order.getOrderId() + " , BDT " + order.getTotalAmount());
+            }
+        }
+        writer.println();
     }
 
     public void initialize(URL url, ResourceBundle resourceBundle) {

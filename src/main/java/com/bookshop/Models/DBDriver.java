@@ -3,6 +3,10 @@ package com.bookshop.Models;
 
 import javafx.application.Platform;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -286,5 +290,49 @@ public class DBDriver {
 
         return items;
     }
+
+    public void addItem(String name, int price, int stock, String category) {
+        String sqlQuery = "INSERT INTO item (item_name, item_price, stock, category) VALUES (?, ?, ?, ?)";
+
+        try (PreparedStatement preparedStatement = conn.prepareStatement(sqlQuery)) {
+            preparedStatement.setString(1, name);
+            preparedStatement.setInt(2, price);
+            preparedStatement.setInt(3, stock);
+            preparedStatement.setString(4, category);
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void addItemFromCSV(File csvFile) {
+        String sqlQuery = "INSERT INTO item (item_name, item_price, stock, category) VALUES (?, ?, ?, ?)";
+
+        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] values = line.split(",");
+                if (values.length == 4) {
+                    String name = values[0];
+                    int price = Integer.parseInt(values[1]);
+                    int stock = Integer.parseInt(values[2]);
+                    String category = values[3];
+
+                    try (PreparedStatement preparedStatement = conn.prepareStatement(sqlQuery)) {
+                        preparedStatement.setString(1, name);
+                        preparedStatement.setInt(2, price);
+                        preparedStatement.setInt(3, stock);
+                        preparedStatement.setString(4, category);
+
+                        preparedStatement.executeUpdate();
+                    }
+                }
+            }
+        } catch (IOException | SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }

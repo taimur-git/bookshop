@@ -34,6 +34,9 @@ public class LoginController implements Initializable {
         try{
             if(queryResult.isBeforeFirst()){
                queryResult.next();
+               boolean isAdmin = queryResult.getInt("admin") == 1;
+               Model.getInstance().setAdminFlag(isAdmin);
+
                 Model.getInstance().setLoginFlag(true);
                 Model.getInstance().getUser().serUserData(
                         queryResult.getString("id"),
@@ -42,7 +45,11 @@ public class LoginController implements Initializable {
 
                 Stage stage = (Stage)email.getScene().getWindow();
                 Model.getInstance().getViewsFactory().closeStage(stage);
-                Model.getInstance().getViewsFactory().showStoreFrontPage();//showBookshopPage();//showHomePage();//showUserHomeWindow();
+                Model.getInstance().getViewsFactory().showStoreFrontPage();
+                //if(isAdmin)
+                //    Model.getInstance().getViewsFactory().showStoreFrontPage();//.showAdminHomeWindow();
+
+                //showBookshopPage();//showHomePage();//showUserHomeWindow();
             }else{
                 this.emilOrPasswordIncorrectText.setText("Invalid Email or password");
             }

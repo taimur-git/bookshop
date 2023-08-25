@@ -21,8 +21,10 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -84,6 +86,34 @@ public class StorefrontController implements Initializable {
                 rowIndex++;
             }
         }
+        if(Model.getInstance().getAdminFlag()){
+            Pane inputCard = createNewItemInputCard();
+            itemCardsGrid.add(inputCard, columnIndex, rowIndex);
+
+            columnIndex++;
+
+            Button readFromCSVButton = new Button("Read from CSV");
+            readFromCSVButton.setOnAction(event -> {
+                FileChooser fileChooser = new FileChooser();
+                fileChooser.setTitle("Open CSV File");
+                File csvFile = fileChooser.showOpenDialog(
+                        (Stage) readFromCSVButton.getScene().getWindow()
+                );
+
+                if (csvFile != null) {
+                    Model.getInstance().getDbDriver().addItemFromCSV(csvFile);
+                    //updateStorefront();
+                    itemList = Model.getInstance().getDbDriver().itemsList();
+                    displayedItems = FXCollections.observableArrayList(itemList);
+
+                    initializeItemCards();
+                }
+            });
+            itemCardsGrid.add(readFromCSVButton, columnIndex, rowIndex);
+
+
+        }
+
     }
 
     private void filterItems(String query) {
@@ -95,6 +125,7 @@ public class StorefrontController implements Initializable {
         }
         initializeItemCards(); // Refresh the displayed item cards
     }
+
 
 
 
@@ -139,6 +170,53 @@ public class StorefrontController implements Initializable {
 
         card.setCenter(cardContent);
 
+
+        return card;
+    }
+
+    private Pane createNewItemInputCard() {
+        BorderPane card = new BorderPane();
+        card.getStyleClass().add("item-card");
+
+        // Text fields for new item details
+        TextField newItemNameInput = new TextField();
+        newItemNameInput.getStyleClass().add("item-name");
+        newItemNameInput.setPromptText("Enter item name");
+
+        TextField newItemPriceInput = new TextField();
+        newItemPriceInput.getStyleClass().add("item-price");
+        newItemPriceInput.setPromptText("Enter item price");
+
+        TextField newItemStockInput = new TextField();
+        newItemStockInput.getStyleClass().add("item-stock");
+        newItemStockInput.setPromptText("Enter item stock");
+
+        TextField newItemCategoryInput = new TextField();
+        newItemCategoryInput.getStyleClass().add("item-category");
+        newItemCategoryInput.setPromptText("Enter item category");
+
+        // Button to add the new item
+        Button addItemButton = new Button("Add Item");
+        addItemButton.getStyleClass().add("add-item-button");
+        addItemButton.setOnAction(event -> {
+            String name = newItemNameInput.getText();
+            int price = Integer.parseInt(newItemPriceInput.getText());
+            int stock = Integer.parseInt(newItemStockInput.getText());
+            String category = newItemCategoryInput.getText();
+
+            Model.getInstance().getDbDriver().addItem(name, price, stock, category);
+            // Update storefront UI
+            itemList = Model.getInstance().getDbDriver().itemsList();
+            displayedItems = FXCollections.observableArrayList(itemList);
+
+//            initializeItemCards();
+            initializeItemCards();
+        });
+
+        // Set up the layout of the input card
+        VBox inputContainer = new VBox(newItemNameInput, newItemPriceInput, newItemStockInput, newItemCategoryInput, addItemButton);
+        inputContainer.getStyleClass().add("input-container");
+        card.setCenter(inputContainer);
 
         return card;
     }

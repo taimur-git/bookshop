@@ -18,6 +18,8 @@ public class Model {
 
     private int lastOrderId;
 
+    private boolean adminFlag;
+
 
 
     private Model() {
@@ -29,6 +31,7 @@ public class Model {
         this.allCartItems = new VBox();
 
         this.loginFlag = false;
+        this.adminFlag = false;
     }
 
     public static synchronized Model getInstance() {
@@ -67,6 +70,12 @@ public class Model {
 
     public boolean getLoginFlag() {
         return this.loginFlag;
+    }
+    public void setAdminFlag(boolean adminFlag) {
+        this.adminFlag = adminFlag;
+    }
+    public boolean getAdminFlag() {
+        return this.adminFlag;
     }
 
     public String getCurrentCustomerId() {

@@ -36,4 +36,8 @@ public class Order {
                 .mapToDouble(CheckoutItem::getSubtotal)
                 .sum();
     }
+
+    public String getTotalAmount() {
+        return String.format("%.2f", calculateTotal());
+    }
 }

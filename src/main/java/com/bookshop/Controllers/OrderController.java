@@ -24,11 +24,28 @@ public class OrderController implements Initializable {
     public Accordion ordersAccordion;
 
     @FXML
-    private void printButtonAction(ActionEvent actionEvent) {
-        String currentCustomerId = Model.getInstance().getCurrentCustomerId();
-        List<Order> orders = Model.getInstance().getDbDriver().getAllOrdersForCustomer(currentCustomerId);
+    public void printButtonAction(ActionEvent actionEvent) {
 
-        String filename = "orders_" + currentCustomerId + ".txt";
+        if(Model.getInstance().getAdminFlag()){
+            printAllOrders();
+        }else{
+            String currentCustomerId = Model.getInstance().getCurrentCustomerId();
+            printPerCustomer(currentCustomerId);
+        }
+    }
+
+    private void printAllOrders() {
+        //get all customers
+        List<String> customerIds = Model.getInstance().getDbDriver().getAllCustomerIds();
+        for ( String customerId : customerIds) {
+            printPerCustomer(customerId);
+        }
+    }
+
+    public void printPerCustomer(String customerId){
+        List<Order> orders = Model.getInstance().getDbDriver().getAllOrdersForCustomer(customerId);
+
+        String filename = "output/orders_" + customerId + ".txt";
 
         try (PrintWriter writer = new PrintWriter(new FileWriter(filename))) {
             printOrders(writer, "Not Paid", orders, false);
@@ -50,12 +67,19 @@ public class OrderController implements Initializable {
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Get orders data and populate the Accordion
-        List<Order> orders = Model.getInstance().getDbDriver().getAllOrdersForCustomer(Model.getInstance().getCurrentCustomerId());
+        List<Order> orders = Model.getInstance().getAdminFlag() ?
+                Model.getInstance().getDbDriver().getAllOrdersForAllCustomers() :
+                Model.getInstance().getDbDriver().getAllOrdersForCustomer(Model.getInstance().getCurrentCustomerId());
 
-        for (Order order : orders) {
-            TitledPane orderPane = createOrderTitledPane(order);
-            ordersAccordion.getPanes().add(orderPane);
+        if(orders.size() == 0) {
+            ordersAccordion.getPanes().add(new TitledPane("No orders found", new VBox()));
+        } else {
+            for (Order order : orders) {
+                TitledPane orderPane = createOrderTitledPane(order);
+                ordersAccordion.getPanes().add(orderPane);
+            }
         }
+
     }
 
     private TitledPane createOrderTitledPane(Order order) {
@@ -65,7 +89,19 @@ public class OrderController implements Initializable {
         Label orderIdLabel = new Label("Order ID: " + order.getOrderId());
         Label customerIdLabel = new Label("Customer ID: " + order.getCustomerId());
         Label paidStatusLabel = new Label("Paid: " + (order.isPaid() ? "Yes" : "No"));
-        Label totalLabel = new Label("Total: $" + String.format("%.2f", order.calculateTotal()));
+        if(Model.getInstance().getAdminFlag()){
+            Button payButton = new Button("Mark as Paid");
+            if(order.isPaid()) {
+                payButton.setDisable(true);
+            }
+            payButton.setOnAction(event -> {
+                Model.getInstance().getDbDriver().payOrder(order.getOrderId());
+                paidStatusLabel.setText("Paid: Yes");
+                payButton.setDisable(true);
+            });
+            content.getChildren().add(payButton);
+        }
+        Label totalLabel = new Label("Total: BDT " + String.format("%.2f", order.calculateTotal()));
 
         content.getChildren().addAll(orderIdLabel, customerIdLabel, paidStatusLabel, totalLabel);
 

@@ -41,7 +41,7 @@ public class CartPageController {
         double totalPrice = cartItems.stream()
                 .mapToDouble(item -> item.getPrice() * item.getQuantity())
                 .sum();
-        totalLabel.setText("Total: " + totalPrice);
+        totalLabel.setText("Total: BDT " + totalPrice);
         // Bind table columns to properties
         itemNameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getItemName()));
         quantityColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getQuantity()));

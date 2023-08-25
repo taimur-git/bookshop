@@ -96,13 +96,18 @@ public class StorefrontController implements Initializable {
             readFromCSVButton.setOnAction(event -> {
                 FileChooser fileChooser = new FileChooser();
                 fileChooser.setTitle("Open CSV File");
+
+                String initialDirectoryPath = "input";
+                File initialDirectory = new File(initialDirectoryPath);
+                fileChooser.setInitialDirectory(initialDirectory);
+
                 File csvFile = fileChooser.showOpenDialog(
-                        (Stage) readFromCSVButton.getScene().getWindow()
+                        readFromCSVButton.getScene().getWindow()
                 );
 
                 if (csvFile != null) {
                     Model.getInstance().getDbDriver().addItemFromCSV(csvFile);
-                    //updateStorefront();
+
                     itemList = Model.getInstance().getDbDriver().itemsList();
                     displayedItems = FXCollections.observableArrayList(itemList);
 
@@ -146,7 +151,7 @@ public class StorefrontController implements Initializable {
         Text itemCategory = new Text("Category: " + item.getCategory());
         itemCategory.getStyleClass().add("item-category"); // Apply CSS styling to the category text
 
-        Text itemPrice = new Text("Price: " + item.getItemPrice());
+        Text itemPrice = new Text("BDT " + item.getItemPrice());
 
         Button addToCartButton = new Button("Add to Cart");
         addToCartButton.setOnAction(event -> {

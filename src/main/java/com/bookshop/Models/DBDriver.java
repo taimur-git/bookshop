@@ -335,4 +335,32 @@ public class DBDriver {
     }
 
 
+    public List<String> getAllCustomerIds() {
+        List<String> customerIds = new ArrayList<>();
+        String sqlQuery = "SELECT DISTINCT customer_id FROM orders";
+
+        try (PreparedStatement preparedStatement = conn.prepareStatement(sqlQuery);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+            while (resultSet.next()) {
+                String customerId = resultSet.getString("customer_id");
+                customerIds.add(customerId);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return customerIds;
+    }
+
+    public void payOrder(int orderId) {
+        String sqlQuery = "UPDATE orders SET paid = 1 WHERE order_id = ?";
+
+        try (PreparedStatement preparedStatement = conn.prepareStatement(sqlQuery)) {
+            preparedStatement.setInt(1, orderId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

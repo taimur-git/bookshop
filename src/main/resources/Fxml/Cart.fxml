@@ -23,6 +23,4 @@
     </TableView>
     <Label fx:id="totalLabel" />
 
-    <Button text="Back to Storefront" onAction="#goBackToStorefront" />
-
 </VBox>

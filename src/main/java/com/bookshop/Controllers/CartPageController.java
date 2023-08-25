@@ -34,9 +34,9 @@ public class CartPageController {
 /* resultSet.getString("item_name"),
                         resultSet.getInt("quantity"),
                         resultSet.getDouble("item_price")*/
-        itemNameColumn.setCellValueFactory(new PropertyValueFactory<>("item_name"));
+        itemNameColumn.setCellValueFactory(new PropertyValueFactory<>("itemName"));
         quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
-        priceColumn.setCellValueFactory(new PropertyValueFactory<>("item_price"));
+        priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
 
         ObservableList<CheckoutItem> cartItemsObservableList = FXCollections.observableArrayList(cartItems);
         cartTableView.setItems(cartItemsObservableList);
@@ -47,6 +47,4 @@ public class CartPageController {
         totalLabel.setText("Total: " + totalPrice);
     }
 
-    public void goBackToStorefront(ActionEvent actionEvent) {
-    }
 }

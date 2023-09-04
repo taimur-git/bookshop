@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<?import javafx.geometry.Insets?>
+<VBox alignment="CENTER" spacing="10.0" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.bookshop.Controllers.FileSenderController"
+      prefHeight="400.0" prefWidth="600.0">
+<children>
+    <Label text="UIU Bookstore Printer" alignment="CENTER">
+        <padding>
+            <Insets top="20.0" right="0.0" bottom="10.0" left="0.0" />
+        </padding>
+    </Label>
+    <Label text="Choose a file to send." alignment="CENTER" fx:id="fileName">
+        <padding>
+            <Insets top="50.0" right="0.0" bottom="0.0" left="0.0" />
+        </padding>
+    </Label>
+    <Button text="Send File" alignment="CENTER" fx:id="sendFile" onAction="#sendFileAction">
+        <prefWidth>150.0</prefWidth>
+        <prefHeight>75.0</prefHeight>
+    </Button>
+    <Button text="Choose File" alignment="CENTER" fx:id="chooseFile" onAction="#chooseFileAction">
+        <prefWidth>150.0</prefWidth>
+        <prefHeight>75.0</prefHeight>
+    </Button>
+</children>
+</VBox>

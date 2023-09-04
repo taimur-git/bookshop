@@ -38,6 +38,8 @@ public class StorefrontController implements Initializable {
     public Button checkoutButton;
     public Button logOutButton;
     public Button viewOrders;
+    public Button printDocument;
+    public Button chatButton;
 
     private List<Item> itemList; // Store the original list of items
     private ObservableList<Item> displayedItems; // List for displaying filtered items
@@ -87,6 +89,8 @@ public class StorefrontController implements Initializable {
             }
         }
         if(Model.getInstance().getAdminFlag()){
+            printDocument.setText("View Print Requests");
+
             Pane inputCard = createNewItemInputCard();
             itemCardsGrid.add(inputCard, columnIndex, rowIndex);
 
@@ -271,5 +275,22 @@ Model.getInstance().getViewsFactory().showLoginWindow();
 
     public void viewOrdersButtonAction(ActionEvent actionEvent) {
         Model.getInstance().getViewsFactory().showOrdersPage();
+    }
+
+    public void printDocumentButtonAction(ActionEvent actionEvent) {
+        if(Model.getInstance().getAdminFlag()){
+            Model.getInstance().getViewsFactory().showFileReceiverPage();
+        }else{
+            Model.getInstance().getViewsFactory().showFileSenderPage();
+        }
+
+    }
+
+    public void chatButtonAction(ActionEvent actionEvent) {
+        if(Model.getInstance().getAdminFlag()) {
+            Model.getInstance().getViewsFactory().showServerChatPage();
+        }else{
+            Model.getInstance().getViewsFactory().showClientChatPage();
+        }
     }
 }

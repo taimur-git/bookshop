@@ -21,7 +21,11 @@ public class ViewsFactory {
 
     private FXMLLoader cartPage;
     private FXMLLoader ordersPage;
+    private FXMLLoader fileSenderPage;
+    private FXMLLoader fileReceiverPage;
 
+    private FXMLLoader clientChat;
+    private FXMLLoader serverChat;
 
     public ViewsFactory(){}
 
@@ -128,5 +132,25 @@ public class ViewsFactory {
     public void showOrdersPage() {
         this.ordersPage = new FXMLLoader(getClass().getResource("/Fxml/Orders.fxml"));
         this.setStage(ordersPage);
+    }
+
+    public void showFileSenderPage(){
+        this.fileSenderPage = new FXMLLoader(getClass().getResource("/Fxml/fileSender.fxml"));
+        this.setStage(fileSenderPage);
+    }
+
+    public void showFileReceiverPage(){
+        this.fileReceiverPage = new FXMLLoader(getClass().getResource("/Fxml/fileReceiver.fxml"));
+        this.setStage(fileReceiverPage);
+    }
+
+    public void showClientChatPage(){
+        this.clientChat = new FXMLLoader(getClass().getResource("/Fxml/Client.fxml"));
+        this.setStage(clientChat);
+    }
+
+    public void showServerChatPage(){
+        this.serverChat = new FXMLLoader(getClass().getResource("/Fxml/Server.fxml"));
+        this.setStage(serverChat);
     }
 }

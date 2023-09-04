@@ -15,22 +15,9 @@ public class ServerApp extends Application {
     @Override
     public void start(Stage stage){
         Model.getInstance().setAdminFlag(true);
+        //Model.getInstance().getViewsFactory().showFileSenderPage();
         Model.getInstance().getViewsFactory().showStoreFrontPage();
-
-        try (ServerSocket serverSocket = new ServerSocket(8888)) {
-            while (true) {
-                Socket clientSocket = serverSocket.accept();
-                // Handle client communication in a separate thread
-                Thread clientThread = new Thread(new ClientHandler(clientSocket));
-                clientThread.start();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void main(String[] args) {
-        launch(args);
+        //Model.getInstance().getViewsFactory().showServerChatPage();
     }
 
 }

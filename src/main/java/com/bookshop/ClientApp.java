@@ -13,14 +13,9 @@ import java.net.Socket;
 public class ClientApp extends Application {
     @Override
     public void start(Stage stage){
+        //Model.getInstance().getViewsFactory().showClientChatPage();
         Model.getInstance().getViewsFactory().showLoginWindow();
-
-        Thread clientThread = new Thread(new ClientThread());
-        clientThread.start();
-    }
-
-    public static void main(String[] args) {
-        launch(args);
+        //Model.getInstance().getViewsFactory().showFileReceiverPage();
     }
 }
 

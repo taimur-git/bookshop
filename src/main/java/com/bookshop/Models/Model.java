@@ -93,4 +93,8 @@ public class Model {
     public int getLastOrderId() {
         return this.lastOrderId;
     }
+
+    public String getUsername() {
+        return this.user.getName();
+    }
 }
